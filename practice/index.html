@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>component-exchange</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <!-- first Vue instance -->
+  <div id="app">
+    <p :class = ['card-1-text']>{{message}}</p>
+    <card_exchange @msg_trigger = "allocate" :prop_data = 'message'></card_exchange>
+    <p :class = ['card-1-text']>{{received_msg}}</p>
+  </div>
+  <hr>
+
+  <template id="card-template-1">
+    <div :id=["card-1-container"]>
+      <h1 :class=["card-1-header"]>{{component_msg}}</h1>
+      <p :class = ['card-1-text']>{{incoming_msg}}</p>
+      <div>
+        <input type="text" v-model = 'sent_msg' >
+        <input type="text" >
+        <button @click = "sent">Send data</button>
+
+      </div>
+      <p :class = ['card-1-text']>{{prop_data}}</p>
+    </div>
+  </template>
+
+  <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>

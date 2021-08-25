@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>component-exchange</title>
+  <link rel="stylesheet" href="./style/style.css">
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <!-- first Vue instance -->
+  <div id="app">
+    <p :class = ['card-1-text']>{{instance_message}}</p>
+
+    <!-- inline method below is good when you are sending just a data -->
+    <!-- <card-exchange-1 @event="vue_instance_data = arguments[0]"></card-exchange-1> -->
+
+    <!-- defining a method is good when you are sending more than one data -->
+    <card-exchange-1 @event="allocate"></card-exchange-1>
+    
+    <card-exchange-2 :prop_data="instance_message"></card-exchange-2>
+    <p :class = ['card-1-text']>{{vue_instance_data_1}}</p>
+    <p :class = ['card-1-text']>{{vue_instance_data_2}}</p>
+    <!-- card-exchange-local won't work because it is a local component -->
+    <!-- <card_exchange_local></card_exchange_local> -->
+  </div>
+  <hr>
+
+
+  <!-- second Vue instance -->
+  <div id="local_app">
+    <card_exchange_local></card_exchange_local>
+
+    <!-- card-1_&_2_exchange will work because it both are global component -->
+
+    <!-- <card-exchange-1></card-exchange-1>
+    <card-exchange-2></card-exchange-2> -->
+
+  </div>
+
+
+  <template id="card-template-1">
+    <div :id=["card-1-container"]>
+      <h1 :class=["card-1-header"]>{{component_1_message}}</h1>
+      <p :class = ['card-1-text']>{{component_1_message}}</p>
+      <div>
+        <input type="text" v-model="component_1_message">
+        <input type="text" v-model="component_11_message">
+        <button @click="send">Send data</button>
+      </div>
+      
+    </div>
+  </template>
+  <template id="card-template-2">
+    <div :id=["card-1-container"]>
+      <h1 :class=["card-1-header"]>{{component_2_message}}</h1>
+      <p :class = ['card-1-text']>{{component_2_message}}</p>
+      <p :class = ['card-1-text']>{{prop_data}}</p>
+    </div>
+  </template>
+  <template id="card-template-3">
+    <div :id=["card-1-container"]>
+      <h1 :class=["card-1-header"]>{{component_2_message}}</h1>
+      <p :class = ['card-1-text']>{{component_2_message}}</p>
+      <p :class = ['card-1-text']>{{message}}</p>
+    </div>
+  </template>
+
+  <script type="text/javascript" src="./script.js"></script>
+</body>
+</html>

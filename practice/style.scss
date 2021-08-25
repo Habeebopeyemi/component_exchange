@@ -1,0 +1,46 @@
+$shadow: 0 8px 30px 1px rgba(31, 38, 135, 0.1);
+
+:root{
+  --shadow: #{$shadow};
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  outline: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+#app, #local_app{
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+.card-1-text{
+  padding: .5rem;
+  font-style: italic;
+  border: 1px solid rgba(31, 38, 135, 0.2);
+  border-radius: 20px;
+  margin: 20px 0;
+  width: 100%;
+}
+#card-1-container{
+  width: 90%;
+  max-width: 354px;
+  box-shadow: var(--shadow);
+  padding: .5rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 0 0 30px 0;
+}
+.card-1-header{
+  font-size: 1rem;
+  margin: 0 0 20px 0;
+  width: 100%;
+}
